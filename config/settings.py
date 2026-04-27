@@ -1,9 +1,7 @@
 import os
-from dotenv import load_dotenv
-from pathlib import Path
+from dotenv import load_dotenv, find_dotenv
 
-env_path = Path(__file__).parent.parent / '.env'
-load_dotenv(dotenv_path=env_path)
+load_dotenv(find_dotenv())
 
 class Settings:
     OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")

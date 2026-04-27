@@ -1,11 +1,12 @@
 import os
 from core.file_utils import read_input_files, write_file
-from agents.use_case_agent import generate_use_cases
-from agents.non_func_agent import generate_nonfunctional
-from agents.func_agent import generate_functional
-from agents.code_agent import generate_code
-from agents.test_agent import generate_tests
-from agents.readme_agent import generate_readme
+from prompts.use_case_agent import generate_use_cases
+from prompts.non_func_agent import generate_nonfunctional
+from prompts.func_agent import generate_functional
+from prompts.code_agent import generate_code
+from prompts.test_agent import generate_tests
+from prompts.readme_agent import generate_readme
+
 
 class Orchestrator:
     def __init__(self, input_dir: str, output_dir: str, refine_comment: str = None):
