@@ -1,0 +1,189 @@
+/* Тёмная тема интерфейса */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0078d4;
+}
+
+.converter {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.field {
+    flex: 1 1 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field label {
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+select, input[type="text"] {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+select:focus, input[type="text"]:focus {
+    border-color: #0078d4;
+}
+
+.btn-swap {
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    flex: 0 0 auto;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-swap:hover {
+    background-color: #005a9e;
+}
+
+.btn-swap:active {
+    transform: scale(0.95);
+}
+
+.result {
+    background-color: #333333;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.converted-amount {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.rate {
+    font-size: 16px;
+    color: #aaaaaa;
+}
+
+.error {
+    color: #ff4444;
+    font-size: 14px;
+    text-align: center;
+    display: none;
+}
+
+.error.visible {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Спиннер */
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.spinner-circle {
+    width: 32px;
+    height: 32px;
+    border: 4px solid #444444;
+    border-top-color: #0078d4;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Жёлтая плашка */
+.banner {
+    background-color: #ffcc00;
+    color: #1e1e1e;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .container {
+        padding: 16px;
+    }
+    .row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .field {
+        flex: 1 1 auto;
+    }
+    .btn-swap {
+        align-self: center;
+        width: 100%;
+    }
+}

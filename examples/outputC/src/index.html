@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrFlow — Конвертер валют</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.exchangerate-api.com; img-src 'self' data:; font-src 'self';">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stale-banner" class="banner hidden">Данные устарели</div>
+    <div class="container">
+        <h1>CurrFlow</h1>
+        <div class="converter">
+            <div class="row">
+                <div class="field">
+                    <label for="source-currency">Исходная валюта</label>
+                    <select id="source-currency"></select>
+                </div>
+                <div class="field">
+                    <label for="amount">Сумма</label>
+                    <input type="text" id="amount" placeholder="0.00" autocomplete="off">
+                </div>
+                <button id="swap-btn" class="btn-swap" title="Поменять валюты местами">⇄</button>
+                <div class="field">
+                    <label for="target-currency">Целевая валюта</label>
+                    <select id="target-currency"></select>
+                </div>
+            </div>
+            <div id="result" class="result">
+                <div id="converted-amount" class="converted-amount">—</div>
+                <div id="rate" class="rate">—</div>
+            </div>
+            <div id="error-message" class="error hidden">Введите корректную сумму</div>
+            <div id="spinner" class="spinner hidden">
+                <div class="spinner-circle"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 from openai import OpenAI
+from core.file_utils import read_file
 from config.settings import settings
 
 
@@ -16,7 +17,7 @@ def call_llm(prompt: str, system_prompt_filename: str) -> str:
                 model=settings.DEFAULT_MODEL,
                 temperature=settings.TEMPERATURE,
                 messages=[
-                    {"role": "system", "content": open(f"prompts/{system_prompt_filename}", encoding="utf-8").read()},
+                    {"role": "system", "content": read_file(f"prompts/{system_prompt_filename}")},
                     {"role": "user", "content": prompt},
                 ]
             )

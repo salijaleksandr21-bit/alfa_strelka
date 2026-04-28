@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src 'self'; connect-src 'self'">
+    <title>QuickCalc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="calculator">
+            <div class="header">
+                <h1>QuickCalc</h1>
+                <button id="historyToggle" class="history-btn" aria-label="История">📋</button>
+            </div>
+            <div class="display">
+                <div id="previousExpression" class="previous-expression"></div>
+                <div id="currentInput" class="current-input">0</div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </div>
+            <div class="buttons">
+                <button class="btn btn-clear" data-action="clear">C</button>
+                <button class="btn btn-operator" data-action="backspace">⌫</button>
+                <button class="btn btn-operator" data-action="percent">%</button>
+                <button class="btn btn-operator" data-action="divide">÷</button>
+                
+                <button class="btn btn-number" data-value="7">7</button>
+                <button class="btn btn-number" data-value="8">8</button>
+                <button class="btn btn-number" data-value="9">9</button>
+                <button class="btn btn-operator" data-action="multiply">×</button>
+                
+                <button class="btn btn-number" data-value="4">4</button>
+                <button class="btn btn-number" data-value="5">5</button>
+                <button class="btn btn-number" data-value="6">6</button>
+                <button class="btn btn-operator" data-action="subtract">−</button>
+                
+                <button class="btn btn-number" data-value="1">1</button>
+                <button class="btn btn-number" data-value="2">2</button>
+                <button class="btn btn-number" data-value="3">3</button>
+                <button class="btn btn-operator" data-action="add">+</button>
+                
+                <button class="btn btn-number" data-value="0">0</button>
+                <button class="btn btn-number" data-value=".">.</button>
+                <button class="btn btn-equals" data-action="equals">=</button>
+            </div>
+        </div>
+        <div id="historyPanel" class="history-panel" style="display: none;">
+            <div class="history-header">
+                <h2>История</h2>
+                <button id="clearHistory" class="btn-clear-history">Очистить историю</button>
+            </div>
+            <ul id="historyList" class="history-list"></ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

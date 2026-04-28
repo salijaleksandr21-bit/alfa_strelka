@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.calculator {
+    background: #16213e;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    color: #e94560;
+    font-weight: 700;
+}
+
+.history-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.history-btn:hover {
+    background: rgba(233, 69, 96, 0.2);
+}
+
+.display {
+    background: #0f3460;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: border-color 0.3s;
+    border: 2px solid transparent;
+}
+
+.display.error {
+    border-color: #e94560;
+}
+
+.previous-expression {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    min-height: 20px;
+    word-wrap: break-word;
+}
+
+.current-input {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: right;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.error-message {
+    color: #e94560;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-number {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.btn-number:hover {
+    background: #2a2a4e;
+}
+
+.btn-operator {
+    background: #0f3460;
+    color: #e94560;
+}
+
+.btn-operator:hover {
+    background: #1a4a80;
+}
+
+.btn-equals {
+    background: #e94560;
+    color: #ffffff;
+    grid-column: span 2;
+}
+
+.btn-equals:hover {
+    background: #ff6b81;
+}
+
+.btn-clear {
+    background: #533483;
+    color: #ffffff;
+}
+
+.btn-clear:hover {
+    background: #7343a3;
+}
+
+.history-panel {
+    background: #16213e;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.history-header h2 {
+    font-size: 1.2rem;
+    color: #e94560;
+}
+
+.btn-clear-history {
+    background: #533483;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.btn-clear-history:hover {
+    background: #7343a3;
+}
+
+.history-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-list li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background: #0f3460;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.95rem;
+}
+
+.history-list li:hover {
+    background: #1a4a80;
+}
+
+.history-list li:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    #app {
+        padding: 10px;
+    }
+    
+    .calculator {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .btn {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .current-input {
+        font-size: 2rem;
+    }
+    
+    .header h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .current-input {
+        font-size: 1.6rem;
+    }
+    
+    .display {
+        padding: 15px;
+        min-height: 80px;
+    }
+}

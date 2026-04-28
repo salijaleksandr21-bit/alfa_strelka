@@ -11,7 +11,6 @@ class Validator:
         try:
             return json.loads(response)
         except:
-            # fallback: пытаемся найти JSON в ответе
             json_match = re.search(r'\{.*\}', response, re.DOTALL)
             if json_match:
                 return json.loads(json_match.group())
@@ -23,3 +22,11 @@ class Validator:
             return self.code(response)
         except ValueError:
             return {"tests/app.test.js": "// No tests generated"}
+    
+    @classmethod
+    def expert(self, response):
+        try:
+            return self.code(response)
+        except ValueError:
+            return {"approved": False, "target_agent": "code", "feedback": "Эксперт не смог распарсить ответ, перегенерируем код."}
+
