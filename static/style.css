@@ -69,7 +69,7 @@ main {
   min-width: 400px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* если документация большая */
+  overflow-y: auto;
 }
 
 /* Форма */
@@ -112,7 +112,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #1d4ed8;
+  background-color: #cc2b1a; /* темнее красный */
 }
 
 /* Спиннер */
@@ -160,7 +160,7 @@ button[type="submit"]:hover {
   margin-bottom: 0.5rem;
 }
 
-/* Стили для рендеренного Markdown */
+/* Markdown content */
 .markdown-body {
   color: var(--text);
   line-height: 1.6;
@@ -182,6 +182,9 @@ button[type="submit"]:hover {
   border-collapse: collapse;
   width: 100%;
   margin: 1em 0;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .markdown-body th, .markdown-body td {
@@ -297,4 +300,105 @@ footer {
 
 .doc-content.hidden {
   display: none;
+}
+
+/* ========== Планшеты (≤768px) ========== */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+    width: 100%;
+    order: -1;
+  }
+
+  .logos img {
+    height: 32px;
+    margin-left: 10px;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    min-width: unset;
+    padding: 1rem;
+    overflow-y: visible;
+  }
+
+  .left-panel {
+    order: -1; /* форма сверху */
+  }
+
+  textarea {
+    font-size: 16px; /* предотвращает масштабирование на iOS */
+    padding: 0.8rem;
+  }
+
+  button[type="submit"] {
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+  }
+
+  .docs-main-title {
+    font-size: 1.3rem;
+  }
+
+  .doc-section h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ========== Телефоны (≤480px) ========== */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .logos img {
+    height: 28px;
+    margin-left: 8px;
+  }
+
+  main {
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+
+  .left-panel,
+  .right-panel {
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+
+  textarea {
+    padding: 0.7rem;
+  }
+
+  .download-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+
+  .docs-main-title {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .markdown-body {
+    font-size: 0.85rem;
+  }
 }
