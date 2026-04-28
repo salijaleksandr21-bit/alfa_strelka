@@ -1,11 +1,7 @@
 import os
+from core.validator import Validator
 from core.file_utils import read_input_files, write_file
-from prompts.use_case_agent import generate_use_cases
-from prompts.non_func_agent import generate_nonfunctional
-from prompts.func_agent import generate_functional
-from prompts.code_agent import generate_code
-from prompts.test_agent import generate_tests
-from prompts.readme_agent import generate_readme
+from core.llm_client import call_llm
 
 
 class Orchestrator:
@@ -27,37 +23,37 @@ class Orchestrator:
         os.makedirs(os.path.join(self.output_dir, 'tests'), exist_ok=True)
         
         # 1. Use cases
-        print("Generating use cases...")
-        use_cases = generate_use_cases(bt, bp)
+        print("1 / 7 | Generating use cases...")
+        use_cases = call_llm(f"{bt}\n{bp}", "use_cases.txt")
         write_file(os.path.join(self.output_dir, 'docs', 'use-cases.md'), use_cases)
         
         # 2. Non-functional requirements
-        print("Generating non-functional requirements...")
-        nft = generate_nonfunctional(bt, bp, features)
+        print("2 / 7 | Generating non-functional requirements...")
+        nft = call_llm(f"{bt}\n{bp}", "non_func.txt")
         write_file(os.path.join(self.output_dir, 'docs', 'non-functional-req.md'), nft)
         
         # 3. Functional requirements (с передачей ранее созданных артефактов)
-        print("Generating functional requirements...")
-        ft = generate_functional(bt, bp, features, use_cases, nft)
+        print("3 / 7 | Generating functional requirements...")
+        ft = call_llm(f"{bt}\n{bp}\n{features}\n{use_cases}\n{nft}", "func.txt")
         write_file(os.path.join(self.output_dir, 'docs', 'functional-req.md'), ft)
         
         # 4. Code
-        print("Generating source code...")
-        code_files = generate_code(bt, bp, features, ft)
+        print("4 / 7 | Generating source code...")
+        code_files = Validator.code(call_llm(f"{bt}\n{bp}\n{features}\n{ft}", "code.txt"))
         for path, content in code_files.items():
             full_path = os.path.join(self.output_dir, path)
             write_file(full_path, content)
-        
+
         # 5. Tests
-        print("Generating tests...")
-        test_files = generate_tests(ft, code_files)
+        print("5 / 7 | Generating tests...")
+        test_files = Validator.test( call_llm(f"{ft}\n{code_files}", "test.txt"))
         for path, content in test_files.items():
             full_path = os.path.join(self.output_dir, path)
             write_file(full_path, content)
-        
+
         # 6. README
-        print("Generating README...")
-        readme = generate_readme()
+        print("6 / 7 | Generating README...")
+        readme = call_llm(f"{bt}\n{bp}\n{ft}\n{nft}\n{code_files}", "readme.txt")
         write_file(os.path.join(self.output_dir, 'README.md'), readme)
-        
+
         print("Generator finished successfully.")

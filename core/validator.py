@@ -18,5 +18,8 @@ class Validator:
             raise ValueError("LLM не вернул валидный JSON с кодом")
 
     @classmethod
-    def test(...):
-        ...
+    def test(self, response):
+        try:
+            return self.code(response)
+        except ValueError:
+            return {"tests/app.test.js": "// No tests generated"}

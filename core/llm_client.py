@@ -8,7 +8,7 @@ client = OpenAI(
 )
 
 
-def call_llm(prompt: str, system_prompt: str = "You are a helpful software architect and developer.") -> str:
+def call_llm(prompt: str, system_prompt_filename: str) -> str:
     """Вызов DeepSeek V4 Flash (или любой другой модели из settings.DEFAULT_MODEL)"""
     for attempt in range(settings.MAX_RETRIES):
         try:
@@ -16,7 +16,7 @@ def call_llm(prompt: str, system_prompt: str = "You are a helpful software archi
                 model=settings.DEFAULT_MODEL,
                 temperature=settings.TEMPERATURE,
                 messages=[
-                    {"role": "system", "content": system_prompt},
+                    {"role": "system", "content": open(f"prompts/{system_prompt_filename}", encoding="utf-8").read()},
                     {"role": "user", "content": prompt},
                 ]
             )
