@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'none';">
+</head>
+<body>
+    <div class="container">
+        <h1>CurrFlow</h1>
+        <form id="converter-form">
+            <label for="from-currency">Исходная валюта:</label>
+            <select id="from-currency" name="from-currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
+                <option value="UAH">UAH</option>
+                <!-- Добавьте другие валюты -->
+            </select>
+            <label for="to-currency">Целевая валюта:</label>
+            <select id="to-currency" name="to-currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
+                <option value="UAH">UAH</option>
+                <!-- Добавьте другие валюты -->
+            </select>
+            <label for="amount">Сумма:</label>
+            <input type="number" id="amount" name="amount" step="0.01">
+            <button id="convert-btn">Конвертировать</button>
+            <button id="swap-btn">⇄</button>
+        </form>
+        <div id="result"></div>
+        <div id="error-message"></div>
+        <div id="loading-spinner" style="display: none;">Загрузка...</div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
