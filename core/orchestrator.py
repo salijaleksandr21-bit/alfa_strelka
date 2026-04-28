@@ -69,11 +69,10 @@ class Orchestrator:
             "test": test_files
         }
         # 7. Expert
-        print("7 / 7 | Testing by Expert...")
+        print(f"7 / 7 | Testing by {settings.EXPERT_LEVEL} Expert...")
         for iteration in range(settings.MAX_RETRIES):
             print(f"🔄 Iteration {iteration+1}: running tests...")
-            expert = Validator.expert(call_llm(str(artifacts), "expert.txt"))
-            print(expert)
+            expert = Validator.expert(call_llm(str(artifacts), f"{settings.EXPERT_LEVEL}_expert.txt"))
             if expert["approved"]:
                 print("✅ All tests passed!")
                 break
