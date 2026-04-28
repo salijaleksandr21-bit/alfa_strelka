@@ -1,0 +1,300 @@
+:root {
+  --primary: #EF3124;
+  --secondary: #7c3aed;
+  --text: #1e293b;
+  --text-bg: #f8fafc;
+  --header-bg: #EF3124;
+  --main-bg: #f1f5f9;
+  --footer-bg: #20A89A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.6rem;
+}
+
+.logos img {
+  height: 40px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+/* Main layout */
+main {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--main-bg);
+}
+
+.left-panel, .right-panel {
+  background: var(--text-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.left-panel {
+  width: 35%;
+  min-width: 320px;
+}
+
+.right-panel {
+  flex: 1;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* если документация большая */
+}
+
+/* Форма */
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  font-family: monospace;
+  resize: vertical;
+  background: white;
+}
+
+input[type="file"] {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1.8rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+/* Спиннер */
+.spinner {
+  margin: 30px auto;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e2e8f0;
+  border-bottom-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#loading-spinner {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Документация */
+.docs-wrapper {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.docs-main-title {
+  font-size: 1.6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--header-bg);
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 0.3rem;
+}
+
+.doc-section {
+  margin-bottom: 1.5rem;
+}
+
+.doc-section h3 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Стили для рендеренного Markdown */
+.markdown-body {
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3,
+.markdown-body h4, .markdown-body h5, .markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #0f172a;
+}
+
+.markdown-body p {
+  margin-bottom: 0.8em;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid #cbd5e1;
+  padding: 0.6em 1em;
+  text-align: left;
+}
+
+.markdown-body th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+.markdown-body code {
+  background-color: #e2e8f0;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.markdown-body pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.markdown-body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+.markdown-body blockquote {
+  border-left: 4px solid var(--primary);
+  padding: 0.5em 1em;
+  color: #475569;
+  margin: 1em 0;
+  background: #f8fafc;
+}
+
+/* Кнопка скачать */
+.download-btn {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  background: #963a05;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+
+.download-btn:hover {
+  background: #047857;
+}
+
+/* Ошибка */
+.error-message {
+  color: #dc2626;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+  background: var(--footer-bg);
+  text-align: center;
+  padding: 1rem;
+  color: #f8fafc;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Сворачиваемые заголовки */
+.collapsible-header {
+  cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+  user-select: none;
+}
+
+.collapsible-header::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  font-size: 0.8rem;
+}
+
+.collapsible-header.collapsed::after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.doc-content {
+  display: block;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.doc-content.hidden {
+  display: none;
+}

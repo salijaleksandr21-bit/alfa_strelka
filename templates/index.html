@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Markdown-рендеринг -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Автономная система генерации кода</h1>
+    <div class="logos">
+      <img src="{{ url_for('static', filename='alpha.svg') }}" alt="Alfa">
+      <img src="{{ url_for('static', filename='technostrelka.svg') }}" alt="Technostrelka">
+    </div>
+  </header>
+
+  <main>
+    <!-- Левая часть: форма -->
+    <section class="left-panel">
+      <form id="generator-form">
+        <label for="bt_text">Бизнес Требования *</label>
+        <textarea id="bt_text" name="bt_text" rows="8" placeholder="Введите текст или загрузите файл ниже"></textarea>
+        <input type="file" name="bt_file" accept=".txt,.md">
+
+        <label for="bp_text">Бизнес Процесс *</label>
+        <textarea id="bp_text" name="bp_text" rows="8" placeholder="Введите текст или загрузите файл ниже"></textarea>
+        <input type="file" name="bp_file" accept=".txt,.md">
+
+        <label for="features_text">Особенности</label>
+        <textarea id="features_text" name="features_text" rows="6" placeholder="Введите текст или загрузите файл (необязательно)"></textarea>
+        <input type="file" name="features_file" accept=".txt,.md">
+
+        <button type="submit" id="generate-btn">Сгенерировать</button>
+      </form>
+    </section>
+
+    <!-- Правая часть: документация -->
+    <section class="right-panel" id="preview-area">
+      <div id="loading-spinner" class="hidden">
+        <div class="spinner"></div>
+        <p>Генерация выполняется...</p>
+      </div>
+
+      <div id="result-container" class="hidden">
+        <div class="docs-wrapper">
+  <h2 class="docs-main-title">Документация</h2>
+
+  <div class="doc-section">
+    <h3 class="collapsible-header">Функциональные требования</h3>
+    <div class="doc-content">
+      <div id="functional-req" class="markdown-body"></div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h3 class="collapsible-header">Нефункциональные требования</h3>
+    <div class="doc-content">
+      <div id="non-functional-req" class="markdown-body"></div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h3 class="collapsible-header">Сценарии использования</h3>
+    <div class="doc-content">
+      <div id="use-cases" class="markdown-body"></div>
+    </div>
+  </div>
+
+  <h2 class="docs-main-title">О проекте</h2>
+  <div id="readme" class="markdown-body"></div>
+        </div>
+
+        <a id="download-link" href="#" class="download-btn" target="_blank">Скачать проект</a>
+      </div>
+
+      <div id="error-container" class="hidden">
+        <p class="error-message">Произошла ошибка: <span id="error-text"></span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Команда "Дошутились". Цифровой вызов "ИИ" | Технострелка 2026 г.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
